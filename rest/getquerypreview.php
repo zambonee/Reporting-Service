@@ -13,18 +13,10 @@ $post = json_decode(file_get_contents('php://input'));
 include_once "parsequery.php";
 // Put connection.php in a more secure location for production.
 include_once "connection.php";
-$query = "";
-$database = "";
-// database and query will be different $post properties depending on whether the user submitted their query from a text-console.
-if (isset($post->useConsole) && $post->useConsole) {
-    $query = $post->consoleQuery;
-    $database = $post->consoleDatabase;
-}
-else {
-    // Restring output to 10000 rows because 1- Google Charts would become slow, and 2- may not be able to build a literal JSON due to memory_limit.
-    $query = parsequery($post, true, 1000);
-    $database = $post->collectionTable[0]->container->name;
-}
+// Restrict output to 10000 rows because 1- Google Charts would become slow, and 2- may not be able to build a literal JSON due to memory_limit.
+$queryBuilder = parsequery($post, true, 1000);
+$query = $queryBuilder["query"];
+$database = $queryBuilder["database"];
 $conn = connect($database);
 $result = array("query" => $query);
 try {
