@@ -1,0 +1,282 @@
+body {
+    display: flex;
+}
+
+textarea {
+    width: 100%;
+    min-width: 40em;
+    min-height: 20em;
+}
+
+fieldset {
+    position: relative;
+}
+
+label {
+    padding-right: 5px;
+}
+
+hr {
+    border:none;
+    border-top:1px dotted gray;
+}
+
+.table {
+    display: table;
+}
+
+.row {
+    display: table-row;
+    padding: 3px;
+}
+
+.cell {
+    display: table-cell;
+    margin: 2px;
+    padding: 2px;
+}
+
+.cell > button {
+    width: 100%;
+}
+
+.indented {
+    margin-left: 2em;
+}
+
+.gray-select {
+    color: gray;
+}
+
+option {
+    color: black;
+}
+
+/* horizontal line across the table section header */
+
+p.divider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 3px;
+}
+
+p.divider * {
+    flex-shrink: 0;
+}
+
+p.divider span.divider {
+    width: 100%;
+    flex-shrink: 1;
+    border-bottom: 1px solid black;
+    margin: 5px;
+}
+
+/* end table section header */
+
+/* help hover-overs */
+
+.help:before, .help-inline:before {
+    content: "?";
+}
+
+.help, .help-inline {
+    border: none; 
+    background: white;
+    border-radius: 50%;
+    border: 1px solid gray;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    padding: 1px;
+    color: gray;
+}
+
+.help {
+    position: absolute; 
+    top: 0; 
+    right: 5px; 
+}
+
+.help-inline {
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.help .tooltip, .help-inline .tooltip {
+    visibility: collapse;
+    position: absolute;
+    width: 30em;
+    background: white;
+    border: 1px solid black;
+    padding: 3px;
+    z-index: 99;
+    text-align: left;
+    color: black;
+}
+
+.help:hover .tooltip, .help-inline:hover .tooltip {
+    visibility: visible;
+}
+
+/* end help */
+
+.divider button {
+    border: none;
+    background: none;
+    padding: 1px;
+    cursor: pointer;
+}
+
+.button-hidegroup {
+    transform: rotate(90deg);
+}
+
+.button-showgroup {
+    
+}
+
+.region-table select {
+    width: 100%;
+}
+
+#query-builder {
+    flex-shrink: 0; /* Maintain width over #display-results */
+}
+
+#display-results {
+    flex-shrink: 1; /* Shrink this before #query-builder */
+}
+
+#query-builder > fieldset {
+    display: table-cell;
+}
+
+#div-charts {
+    display: flex; 
+    flex-wrap: wrap
+}
+
+.chart-container-parent {
+    position: relative;
+}
+
+.div-scrollable {
+    overflow: auto;
+    max-width: 1000px;
+    max-height: 500px;
+    border: 1px solid black;
+}
+
+.chart-container {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    min-width: 200px;
+}
+
+.chart-instructions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20%;
+    z-index: 999;
+    text-align: center;
+}
+
+.chart-container-parent button {
+    visibility: collapse;
+    background: white;
+    border: 1px solid black;
+    margin: 1px;
+}
+
+.chart-container-parent:hover button {
+    visibility: visible;
+}
+
+.chart-close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+}
+
+.div-zoom {
+    position: absolute;
+    top: 4px;
+    left: 4 px;
+}
+
+.div-zoom button {
+    display: block;
+    width: 100%;
+}
+
+.warning {
+    background-color: red;
+    color: white;
+}
+
+.normal-columns > div {
+    float: left !important;
+}
+
+.normal-columns > div > label {
+    display: block;
+}
+
+label, span, button {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+/* Get the input and select heights closer without explicitly setting the height properties. */
+input, select {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+#splash-screen {
+    opacity: 0.8;
+    background-color: #ccc;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    text-align: center;
+    padding-top: 10%;
+}
+
+#splash-screen > * {
+    display: inline-block;
+}
+
+#animated-loader {
+    border: 5px solid #ccc;
+    border-radius: 75%;
+    border-top: 5px solid #3498db;
+    width: 1em;
+    height: 1em;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
