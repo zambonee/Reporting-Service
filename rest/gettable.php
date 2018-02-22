@@ -5,17 +5,9 @@
 $post = json_decode(file_get_contents('php://input'));
 include_once "parsequery.php";
 include_once "connection.php";
-$query = "";
-$database = "";
-// database and query will be different $post properties depending on whether the user submitted their query from a text-console.
-if (isset($post->useConsole) && $post->useConsole) {
-    $query = $post->consoleQuery;
-    $database = $post->consoleDatabase;
-}
-else {
-    $query = parsequery($post, false);
-    $database = $post->collectionTable[0]->container->name;
-}
+$queryBuilder = parsequery($post, true, 1000);
+$query = $queryBuilder["query"];
+$database = $queryBuilder["database"];
 $conn = connect($database);
 set_error_handler(function($errno, $errstr, $errfile, $errline) {
    throw new ErrorException($errno, $errno, 0, $errfile, $errline);
